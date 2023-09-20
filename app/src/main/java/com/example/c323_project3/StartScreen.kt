@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.navigation.NavAction
 import androidx.navigation.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,10 +18,9 @@ import androidx.navigation.findNavController
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [StartScreen.newInstance] factory method to
- * create an instance of this fragment.
+/*
+ * <h1> StartScreen </h1>
+ * Fragment class representing the starting screen in the app.
  */
 class StartScreen : Fragment() {
     // TODO: Rename and change types of parameters
