@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">C323_Project3</string>
+
+    <string name="hello_blank_fragment">hello_blank_fragment</string>
+    <string name="first_number">x</string>
+    <string name="second_number">y</string>
+    <string name="operator">+</string>
+
+</resources>
