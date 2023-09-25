@@ -12,17 +12,18 @@ The following **required** functionality is completed:
 
 The following **extensions** are implemented:
 
-* Safeargs
+* safeargs
+* Math
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src="" title='Video Walkthrough' width='50%' alt='Video Walkthrough' />
+<img src="showcase.gif" title='Video Walkthrough' width='50%' alt='Video Walkthrough' />
 
 ## Notes
 
-I encountered many issues with the safeargs plugin, as it would not create the necessary directions files that it should have, despite me rebuilding the project, changing versions, and trying many other means of getting it to load properly. 
+I encountered many issues with the safeargs plugin, as it would not create the necessary directions files that it should have, despite me rebuilding the project, changing versions, and trying many other means of getting it to load properly. It wasn't until I updated Gradle and all plugins that safeargs worked.
 Otherwise I encountered few issues.
 
 ## License

@@ -1,6 +1,8 @@
 package com.example.c323_project3
 
 import android.os.Bundle
+import android.text.Editable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.findNavController
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,6 +92,7 @@ class QuestionScreen : Fragment() {
                 checkCorrectness(textInput.text.toString())
                 numberSoFar++
                 createNewProblem(var1Text, var2Text)
+                textInput.text.clear()
             }
         }
 
@@ -110,8 +115,12 @@ class QuestionScreen : Fragment() {
             }
 
             "Division" -> {
-                val calculatedResult = (var1 / var2).toString()
-                if ("%.2f".format(inputNumber) ==  "%.2f".format(calculatedResult)) {
+                val calculatedResult = (var1.toFloat() / var2.toFloat()).toString()
+                val roundedResult = BigDecimal(calculatedResult).setScale(2, RoundingMode.HALF_EVEN)
+                Log.v("Question-Division: ","RoundedResult = $roundedResult")
+                val roundedInput = BigDecimal(inputNumber).setScale(2, RoundingMode.HALF_EVEN)
+                Log.v("Question-Division: ","RoundedInput = $roundedInput")
+                if (roundedInput == roundedResult) {
                     numberCorrect += 1
                 }
             }
