@@ -58,6 +58,10 @@ class StartScreen : Fragment() {
         val lowerNumQ = view.findViewById<Button>(R.id.bt_lessQ)
         lowerNumQ.setOnClickListener {
             numLevels -= 1
+            if (numLevels <= 0)
+            {
+                numLevels = 1
+            }
             numQText.text = numLevels.toString()
         }
         val higherNumQ = view.findViewById<Button>(R.id.bt_moreQ)
@@ -77,7 +81,9 @@ class StartScreen : Fragment() {
             Log.v("StartScreen", "Difficulty= $difficulty")
             Log.v("StartScreen", "Operation= $operation")
 
-            val action = QuestionScreenDirections.action_startScreen_to_questionScreen(difficulty, operation, numLevels)
+            val action = StartScreenDirections.actionStartScreenToQuestionScreen(numLevels)
+            action.difficulty = difficulty
+            action.operation = operation
             view.findNavController().navigate(action)
         }
         return view

@@ -63,7 +63,7 @@
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Your answer..."
+                android:hint="Your answer..."
                 android:textSize="40sp"
                 android:textAlignment="center"></EditText>
 

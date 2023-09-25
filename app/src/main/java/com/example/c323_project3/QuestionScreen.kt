@@ -58,7 +58,7 @@ class QuestionScreen : Fragment() {
 
         difficulty = QuestionScreenArgs.fromBundle(requireArguments()).difficulty
         operation = QuestionScreenArgs.fromBundle(requireArguments()).operation
-        numQuestions = QuestionScreenArgs.fromBundle(requireArguments()).number_questions
+        numQuestions = QuestionScreenArgs.fromBundle(requireArguments()).numberQuestions
 
         val operationText = view.findViewById<TextView>(R.id.tv_operation)
         when (operation)
@@ -69,7 +69,9 @@ class QuestionScreen : Fragment() {
             "Subtraction" -> operationText.text = "-"
         }
 
-        createNewProblem()
+        val var1Text = view.findViewById<TextView>(R.id.tv_var1)
+        val var2Text = view.findViewById<TextView>(R.id.tv_var2)
+        createNewProblem(var1Text, var2Text)
 
         val textInput = view.findViewById<EditText>(R.id.et_answer)
 
@@ -77,95 +79,80 @@ class QuestionScreen : Fragment() {
         doneButton.setOnClickListener {
             if (numberSoFar == numQuestions)
             {
-                val action = FinishScreenDirections.action_questionScreen_to_finishScreen(numberCorrect, numQuestions)
+                checkCorrectness(textInput.text.toString())
+                val action = QuestionScreenDirections.actionQuestionScreenToFinishScreen(numberCorrect, numQuestions)
                 view.findNavController().navigate(action)
             }
             else
             {
-                when (operation)
-                {
-                    "Addition" ->
-                    {
-                        if (textInput.text.toString() == (var1 + var2).toString())
-                        {
-                            numberCorrect += 1
-                        }
-                    }
-                    "Multiplication" ->
-                    {
-                        if (textInput.text.toString() == (var1 * var2).toString())
-                        {
-                            numberCorrect += 1
-                        }
-                    }
-                    "Division" ->
-                    {
-                        if (textInput.text.toString() == (var1 / var2).toString())
-                        {
-                            numberCorrect += 1
-                        }
-                    }
-                    "Subtraction" ->
-                    {
-                        if (textInput.text.toString() == (var1 - var2).toString())
-                        {
-                            numberCorrect += 1
-                        }
-                    }
-                }
+                checkCorrectness(textInput.text.toString())
                 numberSoFar++
-                createNewProblem()
+                createNewProblem(var1Text, var2Text)
             }
         }
 
         return view
     }
 
-    /**
-     * <h1> createNewProblem </h1>
-     * Function that takes in no parameters, but based on class values randomly generates the values for both variables on either side of the equation.
-     *
-     */
-    private fun createNewProblem()
+    private fun checkCorrectness(inputNumber : String)
     {
-        when (difficulty)
-        {
-            "Easy" ->
-            {
-                var1 = (1 until 10).random()
-                var2 = (1 until 10).random()
+        when (operation) {
+            "Addition" -> {
+                if (inputNumber == (var1 + var2).toString()) {
+                    numberCorrect += 1
+                }
             }
-            "Medium" ->
-            {
-                var1 = (1 until 25).random()
-                var2 = (1 until 25).random()
+
+            "Multiplication" -> {
+                if (inputNumber == (var1 * var2).toString()) {
+                    numberCorrect += 1
+                }
             }
-            "Hard" ->
-            {
-                var1 = (1 until 50).random()
-                var2 = (1 until 50).random()
+
+            "Division" -> {
+                val calculatedResult = (var1 / var2).toString()
+                if ("%.2f".format(inputNumber) ==  "%.2f".format(calculatedResult)) {
+                    numberCorrect += 1
+                }
+            }
+
+            "Subtraction" -> {
+                if (inputNumber == (var1 - var2).toString()) {
+                    numberCorrect += 1
+                }
             }
         }
     }
 
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QuestionScreen.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QuestionScreen().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    /**
+     * <h1> createNewProblem </h1>
+     * Function that takes in no parameters, but based on class values randomly generates the values for both variables on either side of the equation.
+     * @param var1Text
+     *      TextView object that displays the first variable
+     * @param var2Text
+     *      Textview object that displays the second variable
+     */
+    private fun createNewProblem(var1Text : TextView, var2Text : TextView)
+    {
+        when (difficulty)
+        {
+            "Easy" -> {
+                var1 = (1 until 10).random()
+                var2 = (1 until 10).random()
             }
+
+            "Medium" -> {
+                var1 = (1 until 25).random()
+                var2 = (1 until 25).random()
+            }
+
+            "Hard" -> {
+                var1 = (1 until 50).random()
+                var2 = (1 until 50).random()
+            }
+        }
+
+        var1Text.text = var1.toString()
+        var2Text.text = var2.toString()
     }
 }

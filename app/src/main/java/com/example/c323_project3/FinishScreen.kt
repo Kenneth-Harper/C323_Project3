@@ -41,34 +41,16 @@ class FinishScreen : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_finish_screen, container, false)
 
-        val numCorrect = FinishScreenArgs.fromBundle(requireArguments()).number_correct
-        val numQuestions = FinishScreenArgs.fromBundle(requireArguments()).number_questions
+        val numCorrect = FinishScreenArgs.fromBundle(requireArguments()).numberCorrect
+        val numQuestions = FinishScreenArgs.fromBundle(requireArguments()).numberQuestions
 
         val resultText = view.findViewById<TextView>(R.id.tv_results)
-        resultText.text = numCorrect + " out of " + numQuestions
+        resultText.text = "$numCorrect out of $numQuestions"
 
         val doneButton = view.findViewById<Button>(R.id.bt_toStart)
-        view.findNavController().navigate(R.id.action_finishScreen_to_startScreen)
+        doneButton.setOnClickListener {
+            view.findNavController().navigate(R.id.action_finishScreen_to_startScreen)
+        }
         return view
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FinishScreen.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FinishScreen().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }
