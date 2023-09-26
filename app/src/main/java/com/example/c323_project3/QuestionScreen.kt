@@ -22,7 +22,7 @@ import java.math.RoundingMode
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/*
+/**
  * <h1> QuestionScreen </h1>
  * Fragment class representing the question screen in the app.
  * @param difficulty : string
@@ -103,6 +103,12 @@ class QuestionScreen : Fragment() {
         return view
     }
 
+    /**
+     * <h1> checkCorrectness </h1>
+     * Function used to determine if an input answer is correct for the given equation
+     * @param inputNumber
+     *      The input number as a string that will be evaluated against
+     */
     private fun checkCorrectness(inputNumber : String)
     {
         var correct = false
@@ -150,6 +156,9 @@ class QuestionScreen : Fragment() {
 
             var mediaPlayer = MediaPlayer.create(this.context, R.raw.correct)
             mediaPlayer.start()
+
+            mediaPlayer.release()
+            mediaPlayer = null
         }
         else
         {
@@ -160,6 +169,9 @@ class QuestionScreen : Fragment() {
 
             var mediaPlayer = MediaPlayer.create(this.context, R.raw.wrong)
             mediaPlayer.start()
+
+            mediaPlayer.release()
+            mediaPlayer = null
         }
     }
 
