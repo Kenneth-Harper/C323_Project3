@@ -3,4 +3,5 @@
     android:shape="rectangle">
     <solid android:color="#bebebe">
     </solid>
+    <color android:color="#bebebe"/>
 </shape>

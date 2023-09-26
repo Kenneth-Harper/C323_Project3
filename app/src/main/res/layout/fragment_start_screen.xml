@@ -14,7 +14,18 @@
             android:layout_width="match_parent"
             android:layout_height="215dp"
             android:layout_weight="1"
+
             android:src="@drawable/math_image"></ImageView>
+
+        <TextView
+            android:id="@+id/tv_startResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:textSize="30sp"
+            android:text="You got 3 out of 10 correct in addition. You need to practice more!"
+            ></TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,16 +48,20 @@
                     android:id="@+id/rb_easy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Easy"></RadioButton>
+                    android:textColor="@color/black"
+                    android:text="Easy"
+                    android:checked="true"></RadioButton>
                 <RadioButton
                     android:id="@+id/rb_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Medium"></RadioButton>
                 <RadioButton
                     android:id="@+id/rb_hard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Hard"></RadioButton>
             </RadioGroup>
 
@@ -66,21 +81,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="Addition"></RadioButton>
+                    android:text="Addition"
+                    android:textColor="@color/black"
+                    android:checked="true"></RadioButton>
                 <RadioButton
                     android:id="@+id/rb_multiply"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Multiplication"></RadioButton>
                 <RadioButton
                     android:id="@+id/rb_divide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Division"></RadioButton>
                 <RadioButton
                     android:id="@+id/rb_sub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Subtraction"></RadioButton>
             </RadioGroup>
         </LinearLayout>
@@ -97,6 +117,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
             <Button
                 android:id="@+id/bt_lessQ"
@@ -124,17 +145,16 @@
                 android:textSize="50sp"></Button>
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_start"
             android:layout_width="match_parent"
-            android:layout_height="156dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
             android:gravity="center"
             android:text="START"
             android:textColor="@color/black"
             android:textSize="30sp"
-            android:background="@drawable/rectangle_background">
-
-        </Button>
+            android:background="@drawable/rectangle_background"></androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 
 </FrameLayout>

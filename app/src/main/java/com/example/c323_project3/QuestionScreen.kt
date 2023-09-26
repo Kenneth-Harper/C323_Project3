@@ -1,5 +1,7 @@
 package com.example.c323_project3
 
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -10,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.findNavController
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -84,7 +87,8 @@ class QuestionScreen : Fragment() {
             if (numberSoFar == numQuestions)
             {
                 checkCorrectness(textInput.text.toString())
-                val action = QuestionScreenDirections.actionQuestionScreenToFinishScreen(numberCorrect, numQuestions)
+                val action = QuestionScreenDirections.actionQuestionScreenToStartScreen()
+                action.numberCorrect = numberCorrect
                 view.findNavController().navigate(action)
             }
             else
@@ -101,16 +105,19 @@ class QuestionScreen : Fragment() {
 
     private fun checkCorrectness(inputNumber : String)
     {
+        var correct = false
         when (operation) {
             "Addition" -> {
                 if (inputNumber == (var1 + var2).toString()) {
                     numberCorrect += 1
+                    correct = true
                 }
             }
 
             "Multiplication" -> {
                 if (inputNumber == (var1 * var2).toString()) {
                     numberCorrect += 1
+                    correct = true
                 }
             }
 
@@ -122,14 +129,37 @@ class QuestionScreen : Fragment() {
                 Log.v("Question-Division: ","RoundedInput = $roundedInput")
                 if (roundedInput == roundedResult) {
                     numberCorrect += 1
+                    correct = true
                 }
             }
 
             "Subtraction" -> {
                 if (inputNumber == (var1 - var2).toString()) {
                     numberCorrect += 1
+                    correct = true
                 }
             }
+        }
+
+        if (correct)
+        {
+            val text = "Correct. Good work!"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(this.context, text, duration)
+            toast.show()
+
+            var mediaPlayer = MediaPlayer.create(this.context, R.raw.correct)
+            mediaPlayer.start()
+        }
+        else
+        {
+            val text = "Wrong"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(this.context, text, duration)
+            toast.show()
+
+            var mediaPlayer = MediaPlayer.create(this.context, R.raw.wrong)
+            mediaPlayer.start()
         }
     }
 

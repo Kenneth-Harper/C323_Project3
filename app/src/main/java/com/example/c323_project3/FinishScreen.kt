@@ -40,17 +40,17 @@ class FinishScreen : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_finish_screen, container, false)
-
-        val numCorrect = FinishScreenArgs.fromBundle(requireArguments()).numberCorrect
-        val numQuestions = FinishScreenArgs.fromBundle(requireArguments()).numberQuestions
-
-        val resultText = view.findViewById<TextView>(R.id.tv_results)
-        resultText.text = "$numCorrect out of $numQuestions"
-
-        val doneButton = view.findViewById<Button>(R.id.bt_toStart)
-        doneButton.setOnClickListener {
-            view.findNavController().navigate(R.id.action_finishScreen_to_startScreen)
-        }
+//
+//        val numCorrect = FinishScreenArgs.fromBundle(requireArguments()).numberCorrect
+//        val numQuestions = FinishScreenArgs.fromBundle(requireArguments()).numberQuestions
+//
+//        val resultText = view.findViewById<TextView>(R.id.tv_results)
+//        resultText.text = "$numCorrect out of $numQuestions"
+//
+//        val doneButton = view.findViewById<Button>(R.id.bt_toStart)
+//        doneButton.setOnClickListener {
+//            view.findNavController().navigate(R.id.action_finishScreen_to_startScreen)
+//        }
         return view
     }
 }

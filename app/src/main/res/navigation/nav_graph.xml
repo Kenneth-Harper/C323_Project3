@@ -10,9 +10,6 @@
         android:name="com.example.c323_project3.QuestionScreen"
         android:label="fragment_question_screen"
         tools:layout="@layout/fragment_question_screen" >
-        <action
-            android:id="@+id/action_questionScreen_to_finishScreen"
-            app:destination="@id/finishScreen" />
         <argument
             android:name="difficulty"
             app:argType="string"
@@ -24,21 +21,9 @@
         <argument
             android:name="number_questions"
             app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/finishScreen"
-        android:name="com.example.c323_project3.FinishScreen"
-        android:label="fragment_finish_screen"
-        tools:layout="@layout/fragment_finish_screen" >
         <action
-            android:id="@+id/action_finishScreen_to_startScreen"
+            android:id="@+id/action_questionScreen_to_startScreen"
             app:destination="@id/startScreen" />
-        <argument
-            android:name="number_correct"
-            app:argType="integer" />
-        <argument
-            android:name="number_questions"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/startScreen"
@@ -48,5 +33,9 @@
         <action
             android:id="@+id/action_startScreen_to_questionScreen"
             app:destination="@id/questionScreen" />
+        <argument
+            android:name="number_correct"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 </navigation>

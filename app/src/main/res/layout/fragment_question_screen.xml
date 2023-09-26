@@ -67,7 +67,7 @@
                 android:textSize="40sp"
                 android:textAlignment="center"></EditText>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_done"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:text="DONE"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:background="@drawable/rectangle_background"></Button>
+                android:background="@drawable/rectangle_background"></androidx.appcompat.widget.AppCompatButton>
         </LinearLayout>
 
         <ImageView
