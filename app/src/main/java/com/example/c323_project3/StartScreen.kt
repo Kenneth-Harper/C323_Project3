@@ -52,7 +52,7 @@ class StartScreen : Fragment() {
         val numCorrect = StartScreenArgs.fromBundle(requireArguments()).numberCorrect
         if (numCorrect != -1)
         {
-            if (numCorrect < (numQuestions * 0.8).toInt())
+            if (numCorrect < (numQuestions * 0.8))
             {
                 resultText.setTextColor(Color.parseColor("#FFFF0000"))
                 resultText.text = "You got $numCorrect out of $numQuestions correct in ${operation.lowercase()}. You need to practice more!"

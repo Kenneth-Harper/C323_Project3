@@ -156,9 +156,6 @@ class QuestionScreen : Fragment() {
 
             var mediaPlayer = MediaPlayer.create(this.context, R.raw.correct)
             mediaPlayer.start()
-
-            mediaPlayer.release()
-            mediaPlayer = null
         }
         else
         {
@@ -169,9 +166,6 @@ class QuestionScreen : Fragment() {
 
             var mediaPlayer = MediaPlayer.create(this.context, R.raw.wrong)
             mediaPlayer.start()
-
-            mediaPlayer.release()
-            mediaPlayer = null
         }
     }
 
