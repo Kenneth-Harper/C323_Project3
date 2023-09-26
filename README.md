@@ -1,6 +1,6 @@
 # Math Solver
 
-This project is an arithmetic practice app that was also an exploration into screen management and passing values between separate screens. 
+This project is an arithmetic practice app that was also an exploration into screen management and passing values between separate screens. Later introduced adding toast pop-ups and sound effects through Media Players. 
 
 ## Functionality 
 
@@ -8,18 +8,20 @@ The following **required** functionality is completed:
 
 * [ ] Start screen has radio buttons to pick difficulty and operation.
 * [ ] User can solve problems in the question screen.
-* [ ] User can see their score in the third screen.
+* [ ] User can see their score upon returning to the start screen.
+* [ ] User gets a toast and sound effect when answering that indicates if the answer is correct. 
 
 The following **extensions** are implemented:
 
 * safeargs
 * Math
+* MediaPlayer
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src="showcase.gif" title='Video Walkthrough' width='50%' alt='Video Walkthrough' />
+<img src="Project4Showcase.gif" title='Video Walkthrough' width='50%' alt='Video Walkthrough' />
 
 ## Notes
 
